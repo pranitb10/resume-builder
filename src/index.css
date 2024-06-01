@@ -1,0 +1,72 @@
+/* src/index.css */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0; /* Light background for better visibility */
+}
+
+.app-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 20px;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-right: 20px; /* Space between form and A4 letter */
+  padding: 20px;
+  border: 1px solid #ddd;
+  background-color: white;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 300px; /* Constrain the form width for better alignment */
+}
+
+form div {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.buttons-container {
+  margin-top: 20px;
+}
+
+button {
+  margin: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+.letter-box-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px; /* Increased padding to ensure the letter box fits well */
+  border: 1px solid #ddd;
+  background-color: white;
+}
+
+.letter-box {
+  width: 210mm;
+  height: 297mm;
+  padding: 20mm;
+  border: 1px solid black;
+  box-sizing: border-box;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Align items at the top */
+  align-items: center;
+}
