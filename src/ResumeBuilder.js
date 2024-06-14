@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { jsPDF } from 'jspdf';
 import { saveAs } from 'file-saver';
 import { Document, Packer, Paragraph, TextRun } from 'docx';
 import { auth } from './firebaseConfig';
+import 'react-quill/dist/quill.snow.css';
+import ReactQuill from 'react-quill';
 import './ResumeBuilder.css';
 
 const ResumeBuilder = ({ onSignout }) => {
@@ -17,6 +19,10 @@ const ResumeBuilder = ({ onSignout }) => {
   const [skills, setSkills] = useState({ technical: '', nonTechnical: '', managerial: '', soft: '' });
   const [achievements, setAchievements] = useState('');
   const [error, setError] = useState('');
+
+  useEffect(() => {
+    setError('');
+  }, [name, email, phone, website, linkedin, github, experience, education, skills, achievements]);
 
   const handleExperienceChange = (index, field, value) => {
     const newExperience = [...experience];
@@ -34,11 +40,28 @@ const ResumeBuilder = ({ onSignout }) => {
     setSkills({ ...skills, [field]: value });
   };
 
-  const handlePDFDownload = () => {
+  const validateForm = () => {
     if (!name || !email || !phone) {
       setError('Please fill all required fields.');
-      return;
+      return false;
     }
+    for (const exp of experience) {
+      if (!exp.period || !exp.position || !exp.company) {
+        setError('Please fill all required fields in experience.');
+        return false;
+      }
+    }
+    for (const edu of education) {
+      if (!edu.school || !edu.major) {
+        setError('Please fill all required fields in education.');
+        return false;
+      }
+    }
+    return true;
+  };
+
+  const handlePDFDownload = () => {
+    if (!validateForm()) return;
 
     const doc = new jsPDF();
 
@@ -51,19 +74,19 @@ const ResumeBuilder = ({ onSignout }) => {
 
     doc.text(`Experience:`, 10, 70);
     experience.forEach((exp, index) => {
-      doc.text(`Period: ${exp.period}`, 10, 80 + index * 10);
-      doc.text(`Position: ${exp.position}`, 10, 90 + index * 10);
-      doc.text(`Company: ${exp.company}`, 10, 100 + index * 10);
-      doc.text(`Description: ${exp.description}`, 10, 110 + index * 10);
+      doc.text(`Period: ${exp.period}`, 10, 80 + index * 20);
+      doc.text(`Position: ${exp.position}`, 10, 90 + index * 20);
+      doc.text(`Company: ${exp.company}`, 10, 100 + index * 20);
+      doc.text(`Description: ${exp.description}`, 10, 110 + index * 20);
     });
 
     doc.text(`Education:`, 10, 120);
     education.forEach((edu, index) => {
-      doc.text(`School: ${edu.school}`, 10, 130 + index * 10);
-      doc.text(`Major: ${edu.major}`, 10, 140 + index * 10);
-      doc.text(`GPA: ${edu.gpa}`, 10, 150 + index * 10);
-      doc.text(`Period: ${edu.period}`, 10, 160 + index * 10);
-      doc.text(`Description: ${edu.description}`, 10, 170 + index * 10);
+      doc.text(`School: ${edu.school}`, 10, 130 + index * 20);
+      doc.text(`Major: ${edu.major}`, 10, 140 + index * 20);
+      doc.text(`GPA: ${edu.gpa}`, 10, 150 + index * 20);
+      doc.text(`Period: ${edu.period}`, 10, 160 + index * 20);
+      doc.text(`Description: ${edu.description}`, 10, 170 + index * 20);
     });
 
     doc.text(`Skills:`, 10, 180);
@@ -78,10 +101,7 @@ const ResumeBuilder = ({ onSignout }) => {
   };
 
   const handleDOCDownload = async () => {
-    if (!name || !email || !phone) {
-      setError('Please fill all required fields.');
-      return;
-    }
+    if (!validateForm()) return;
 
     const doc = new Document({
       sections: [
@@ -127,6 +147,11 @@ const ResumeBuilder = ({ onSignout }) => {
     auth.signOut().then(() => {
       onSignout();
     });
+  };
+
+  const updatePreview = () => {
+    if (!validateForm()) return;
+    setError('');
   };
 
   return (
@@ -184,10 +209,9 @@ const ResumeBuilder = ({ onSignout }) => {
                   required
                 />
                 <label>Description:</label>
-                <input
-                  type="text"
+                <ReactQuill
                   value={exp.description}
-                  onChange={(e) => handleExperienceChange(index, 'description', e.target.value)}
+                  onChange={(value) => handleExperienceChange(index, 'description', value)}
                 />
               </div>
             ))}
@@ -226,10 +250,9 @@ const ResumeBuilder = ({ onSignout }) => {
                   onChange={(e) => handleEducationChange(index, 'period', e.target.value)}
                 />
                 <label>Description:</label>
-                <input
-                  type="text"
+                <ReactQuill
                   value={edu.description}
-                  onChange={(e) => handleEducationChange(index, 'description', e.target.value)}
+                  onChange={(value) => handleEducationChange(index, 'description', value)}
                 />
               </div>
             ))}
@@ -251,9 +274,10 @@ const ResumeBuilder = ({ onSignout }) => {
           <div>
             <h3>Achievements</h3>
             <label>Description:</label>
-            <input type="text" value={achievements} onChange={(e) => setAchievements(e.target.value)} />
+            <ReactQuill value={achievements} onChange={(value) => setAchievements(value)} />
           </div>
           {error && <p className="error">{error}</p>}
+          <button type="button" onClick={updatePreview}>Update Preview</button>
           <button type="button" onClick={handlePDFDownload}>Download PDF</button>
           <button type="button" onClick={handleDOCDownload}>Download DOCX</button>
         </form>
@@ -269,7 +293,7 @@ const ResumeBuilder = ({ onSignout }) => {
                   <p><strong>Period:</strong> {exp.period}</p>
                   <p><strong>Position:</strong> {exp.position}</p>
                   <p><strong>Company:</strong> {exp.company}</p>
-                  <p>{exp.description}</p>
+                  <div dangerouslySetInnerHTML={{ __html: exp.description }} />
                 </div>
               ))}
               <h2>Education</h2>
@@ -279,7 +303,7 @@ const ResumeBuilder = ({ onSignout }) => {
                   <p><strong>Major:</strong> {edu.major}</p>
                   <p><strong>GPA:</strong> {edu.gpa}</p>
                   <p><strong>Period:</strong> {edu.period}</p>
-                  <p>{edu.description}</p>
+                  <div dangerouslySetInnerHTML={{ __html: edu.description }} />
                 </div>
               ))}
               <h2>Skills</h2>
@@ -288,7 +312,7 @@ const ResumeBuilder = ({ onSignout }) => {
               <p><strong>Managerial:</strong> {skills.managerial}</p>
               <p><strong>Soft:</strong> {skills.soft}</p>
               <h2>Achievements</h2>
-              <p>{achievements}</p>
+              <div dangerouslySetInnerHTML={{ __html: achievements }} />
             </div>
           </div>
         </div>
