@@ -12,19 +12,13 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCX035Nhe02whTHLl7DuTFYw2l1_lB-YlA",
-
-  authDomain: "vitae-791a6.firebaseapp.com",
-
-  projectId: "vitae-791a6",
-
-  storageBucket: "vitae-791a6.appspot.com",
-
-  messagingSenderId: "780224443919",
-
-  appId: "1:780224443919:web:8fe731ca5f8c52e950d57a",
-
-  measurementId: "G-E02NGEETWW"
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
+  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
 };
 
 // Initialize Firebase
