@@ -1,0 +1,92 @@
+.resume-builder-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  .resume-builder-container .signout-button {
+    align-self: flex-end;
+    padding: 10px 20px;
+    border: none;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    margin: 10px;
+  }
+  
+  .resume-builder-container .signout-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .resume-content {
+    display: flex;
+    flex: 1;
+    overflow: auto;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    padding: 20px;
+  }
+  
+  form div {
+    margin-bottom: 15px;
+  }
+  
+  form label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  form input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  form button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 10px;
+  }
+  
+  form button:hover {
+    background-color: #0056b3;
+  }
+  
+  .preview-container {
+    width: 50%;
+    padding: 20px;
+    overflow: auto;
+    background-color: #f4f4f4;
+  }
+  
+  .a4-preview {
+    width: 210mm;
+    height: 297mm;
+    padding: 20mm;
+    background-color: white;
+    box-shadow: 0 0 5mm rgba(0, 0, 0, 0.1);
+  }
+  
+  .content {
+    font-size: 14px;
+  }
+  
+  h1, h2, h3 {
+    margin: 0 0 10px 0;
+  }
+  
+  .error {
+    color: red;
+    text-align: center;
+  }  
