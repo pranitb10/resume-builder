@@ -45,15 +45,11 @@ import Signup from "./Signup";
 import Signin from "./Signin";
 import ResumeBuilder from "./ResumeBuilder";
 import { getUser } from "./firebaseConfig";
+import { User as FirebaseUser } from "firebase/auth";
 import "./App.css";
 
-interface User {
-  uid: string;
-  email: string;
-}
-
 const App: FC = () => {
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<FirebaseUser | null>(null);
   const [showSignup, setShowSignup] = useState<boolean>(true);
 
   useEffect(() => {
