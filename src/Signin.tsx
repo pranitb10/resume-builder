@@ -42,7 +42,6 @@
 import React, { useState, FormEvent, ChangeEvent, FC } from "react";
 import { signInWithEmailAndPassword, User } from "firebase/auth";
 import { auth } from "./firebaseConfig";
-import "./Signin.css";
 
 interface SigninProps {
   onSignin: (user: User) => void;
@@ -75,32 +74,39 @@ const Signin: FC<SigninProps> = ({ onSignin, toggleForm }) => {
     };
 
   return (
-    <div className="auth-form-container">
-      <h2>Signin</h2>
+    <div className="max-w-md mx-auto p-5 border border-gray-300 rounded-md mt-5">
+      <h2 className="text-center text-2xl font-semibold">Signin</h2>
       <form onSubmit={handleSignin}>
-        <div>
-          <label>Email:</label>
+        <div className="mb-4">
+          <label className="block mb-2">Email:</label>
           <input
             type="email"
             value={email}
             onChange={handleChange(setEmail)}
             required
+            className="w-full p-2 border border-gray-300 rounded"
           />
         </div>
-        <div>
-          <label>Password:</label>
+        <div className="mb-4">
+          <label className="block mb-2">Password:</label>
           <input
             type="password"
             value={password}
             onChange={handleChange(setPassword)}
             required
+            className="w-full p-2 border border-gray-300 rounded"
           />
         </div>
-        {error && <p className="error">{error}</p>}
-        <button type="submit">Signin</button>
-        <p>
+        {error && <p className="text-red-500 text-center">{error}</p>}
+        <button
+          type="submit"
+          className="w-full py-3 bg-blue-500 text-white rounded hover:bg-blue-700 mt-2"
+        >
+          Signin
+        </button>
+        <p className="text-center mt-4">
           Don't have an account?{" "}
-          <a href="#" onClick={toggleForm}>
+          <a href="#" onClick={toggleForm} className="text-blue-500">
             Signup
           </a>
         </p>
