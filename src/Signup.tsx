@@ -1,7 +1,6 @@
 import React, { useState, FormEvent, ChangeEvent, FC } from "react";
 import { createUserWithEmailAndPassword, User } from "firebase/auth";
 import { auth } from "./firebaseConfig";
-import "./Signup.css";
 
 interface SignupProps {
   onSignup: (user: User) => void;
@@ -36,50 +35,59 @@ const Signup: FC<SignupProps> = ({ onSignup, toggleForm }) => {
     };
 
   return (
-    <div className="auth-form-container">
-      <h2>Signup</h2>
+    <div className="max-w-md mx-auto p-5 border border-gray-300 rounded-md">
+      <h2 className="text-center text-2xl font-semibold">Signup</h2>
       <form onSubmit={handleSignup}>
-        <div>
-          <label>First Name:</label>
+        <div className="mb-4">
+          <label className="block mb-2">First Name:</label>
           <input
             type="text"
             value={firstName}
             onChange={handleChange(setFirstName)}
             required
+            className="w-full p-2 border border-gray-300 rounded"
           />
         </div>
-        <div>
-          <label>Last Name:</label>
+        <div className="mb-4">
+          <label className="block mb-2">Last Name:</label>
           <input
             type="text"
             value={lastName}
             onChange={handleChange(setLastName)}
             required
+            className="w-full p-2 border border-gray-300 rounded"
           />
         </div>
-        <div>
-          <label>Email:</label>
+        <div className="mb-4">
+          <label className="block mb-2">Email:</label>
           <input
             type="email"
             value={email}
             onChange={handleChange(setEmail)}
             required
+            className="w-full p-2 border border-gray-300 rounded"
           />
         </div>
-        <div>
-          <label>Password:</label>
+        <div className="mb-4">
+          <label className="block mb-2">Password:</label>
           <input
             type="password"
             value={password}
             onChange={handleChange(setPassword)}
             required
+            className="w-full p-2 border border-gray-300 rounded"
           />
         </div>
-        {error && <p className="error">{error}</p>}
-        <button type="submit">Signup</button>
-        <p>
+        {error && <p className="text-red-500 text-center">{error}</p>}
+        <button
+          type="submit"
+          className="w-full py-3 bg-blue-500 text-white rounded hover:bg-blue-700"
+        >
+          Signup
+        </button>
+        <p className="text-center mt-4">
           Already have an account?{" "}
-          <a href="#" onClick={toggleForm}>
+          <a href="#" onClick={toggleForm} className="text-blue-500">
             Signin
           </a>
         </p>
