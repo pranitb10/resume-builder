@@ -330,7 +330,7 @@ import { Document, Packer, Paragraph, TextRun } from "docx";
 import { auth } from "./firebaseConfig";
 import "react-quill/dist/quill.snow.css";
 import ReactQuill from "react-quill";
-import "./ResumeBuilder.css";
+// import "./ResumeBuilder.css";
 
 interface Experience {
   period: string;
@@ -556,96 +556,388 @@ const ResumeBuilder: React.FC<ResumeBuilderProps> = ({ onSignout }) => {
   };
 
   return (
-    <div className="resume-builder-container">
-      <button className="signout-button" onClick={handleSignoutClick}>
+    // <div className="resume-builder-container">
+    //   <button className="signout-button" onClick={handleSignoutClick}>
+    //     Signout
+    //   </button>
+    //   <div className="resume-content">
+    //     <form>
+    //       <div>
+    //         <label>Name:</label>
+    //         <input
+    //           type="text"
+    //           value={name}
+    //           onChange={(e) => setName(e.target.value)}
+    //           required
+    //         />
+    //       </div>
+    //       <div>
+    //         <label>Email:</label>
+    //         <input
+    //           type="email"
+    //           value={email}
+    //           onChange={(e) => setEmail(e.target.value)}
+    //           required
+    //         />
+    //       </div>
+    //       <div>
+    //         <label>Phone:</label>
+    //         <input
+    //           type="tel"
+    //           value={phone}
+    //           onChange={(e) => setPhone(e.target.value)}
+    //           required
+    //         />
+    //       </div>
+    //       <div>
+    //         <label>Website:</label>
+    //         <input
+    //           type="url"
+    //           value={website}
+    //           onChange={(e) => setWebsite(e.target.value)}
+    //         />
+    //       </div>
+    //       <div>
+    //         <label>LinkedIn:</label>
+    //         <input
+    //           type="url"
+    //           value={linkedin}
+    //           onChange={(e) => setLinkedin(e.target.value)}
+    //         />
+    //       </div>
+    //       <div>
+    //         <label>GitHub:</label>
+    //         <input
+    //           type="url"
+    //           value={github}
+    //           onChange={(e) => setGithub(e.target.value)}
+    //         />
+    //       </div>
+    //       <div>
+    //         <h3>Experience</h3>
+    //         {experience.map((exp, index) => (
+    //           <div key={index}>
+    //             <label>Period:</label>
+    //             <input
+    //               type="text"
+    //               value={exp.period}
+    //               onChange={(e) =>
+    //                 handleExperienceChange(index, "period", e.target.value)
+    //               }
+    //               required
+    //             />
+    //             <label>Position:</label>
+    //             <input
+    //               type="text"
+    //               value={exp.position}
+    //               onChange={(e) =>
+    //                 handleExperienceChange(index, "position", e.target.value)
+    //               }
+    //               required
+    //             />
+    //             <label>Company:</label>
+    //             <input
+    //               type="text"
+    //               value={exp.company}
+    //               onChange={(e) =>
+    //                 handleExperienceChange(index, "company", e.target.value)
+    //               }
+    //               required
+    //             />
+    //             <label>Description:</label>
+    //             <ReactQuill
+    //               value={exp.description}
+    //               onChange={(value) =>
+    //                 handleExperienceChange(index, "description", value)
+    //               }
+    //             />
+    //           </div>
+    //         ))}
+    //         <button
+    //           type="button"
+    //           onClick={() =>
+    //             setExperience([
+    //               ...experience,
+    //               { period: "", position: "", company: "", description: "" },
+    //             ])
+    //           }
+    //         >
+    //           Add More Experience
+    //         </button>
+    //       </div>
+    //       <div>
+    //         <h3>Education</h3>
+    //         {education.map((edu, index) => (
+    //           <div key={index}>
+    //             <label>School:</label>
+    //             <input
+    //               type="text"
+    //               value={edu.school}
+    //               onChange={(e) =>
+    //                 handleEducationChange(index, "school", e.target.value)
+    //               }
+    //               required
+    //             />
+    //             <label>Major:</label>
+    //             <input
+    //               type="text"
+    //               value={edu.major}
+    //               onChange={(e) =>
+    //                 handleEducationChange(index, "major", e.target.value)
+    //               }
+    //               required
+    //             />
+    //             <label>GPA:</label>
+    //             <input
+    //               type="text"
+    //               value={edu.gpa}
+    //               onChange={(e) =>
+    //                 handleEducationChange(index, "gpa", e.target.value)
+    //               }
+    //             />
+    //             <label>Period:</label>
+    //             <input
+    //               type="text"
+    //               value={edu.period}
+    //               onChange={(e) =>
+    //                 handleEducationChange(index, "period", e.target.value)
+    //               }
+    //             />
+    //             <label>Description:</label>
+    //             <ReactQuill
+    //               value={edu.description}
+    //               onChange={(value) =>
+    //                 handleEducationChange(index, "description", value)
+    //               }
+    //             />
+    //           </div>
+    //         ))}
+    //         <button
+    //           type="button"
+    //           onClick={() =>
+    //             setEducation([
+    //               ...education,
+    //               {
+    //                 school: "",
+    //                 major: "",
+    //                 gpa: "",
+    //                 period: "",
+    //                 description: "",
+    //               },
+    //             ])
+    //           }
+    //         >
+    //           Add More Education
+    //         </button>
+    //       </div>
+    //       <div>
+    //         <h3>Skills</h3>
+    //         <label>Technical:</label>
+    //         <input
+    //           type="text"
+    //           value={skills.technical}
+    //           onChange={(e) => handleSkillsChange("technical", e.target.value)}
+    //         />
+    //         <label>Non-Technical:</label>
+    //         <input
+    //           type="text"
+    //           value={skills.nonTechnical}
+    //           onChange={(e) =>
+    //             handleSkillsChange("nonTechnical", e.target.value)
+    //           }
+    //         />
+    //         <label>Managerial:</label>
+    //         <input
+    //           type="text"
+    //           value={skills.managerial}
+    //           onChange={(e) => handleSkillsChange("managerial", e.target.value)}
+    //         />
+    //         <label>Soft:</label>
+    //         <input
+    //           type="text"
+    //           value={skills.soft}
+    //           onChange={(e) => handleSkillsChange("soft", e.target.value)}
+    //         />
+    //       </div>
+    //       <div>
+    //         <h3>Achievements</h3>
+    //         <label>Description:</label>
+    //         <ReactQuill
+    //           value={achievements}
+    //           onChange={(value) => setAchievements(value)}
+    //         />
+    //       </div>
+    //       {error && <p className="error">{error}</p>}
+    //       <button type="button" onClick={updatePreview}>
+    //         Update Preview
+    //       </button>
+    //       <button type="button" onClick={handlePDFDownload}>
+    //         Download PDF
+    //       </button>
+    //       <button type="button" onClick={handleDOCDownload}>
+    //         Download DOCX
+    //       </button>
+    //     </form>
+    //     <div className="preview-container">
+    //       <div className="a4-preview">
+    //         <div className="content">
+    //           <h1>{name}</h1>
+    //           <p>
+    //             Email: {email} | Phone: {phone}
+    //           </p>
+    //           <p>
+    //             Website: {website} | LinkedIn: {linkedin} | GitHub: {github}
+    //           </p>
+    //           <h2>Experience</h2>
+    //           {experience.map((exp, index) => (
+    //             <div key={index}>
+    //               <p>
+    //                 <strong>Period:</strong> {exp.period}
+    //               </p>
+    //               <p>
+    //                 <strong>Position:</strong> {exp.position}
+    //               </p>
+    //               <p>
+    //                 <strong>Company:</strong> {exp.company}
+    //               </p>
+    //               <div dangerouslySetInnerHTML={{ __html: exp.description }} />
+    //             </div>
+    //           ))}
+    //           <h2>Education</h2>
+    //           {education.map((edu, index) => (
+    //             <div key={index}>
+    //               <p>
+    //                 <strong>School:</strong> {edu.school}
+    //               </p>
+    //               <p>
+    //                 <strong>Major:</strong> {edu.major}
+    //               </p>
+    //               <p>
+    //                 <strong>GPA:</strong> {edu.gpa}
+    //               </p>
+    //               <p>
+    //                 <strong>Period:</strong> {edu.period}
+    //               </p>
+    //               <div dangerouslySetInnerHTML={{ __html: edu.description }} />
+    //             </div>
+    //           ))}
+    //           <h2>Skills</h2>
+    //           <p>
+    //             <strong>Technical:</strong> {skills.technical}
+    //           </p>
+    //           <p>
+    //             <strong>Non-Technical:</strong> {skills.nonTechnical}
+    //           </p>
+    //           <p>
+    //             <strong>Managerial:</strong> {skills.managerial}
+    //           </p>
+    //           <p>
+    //             <strong>Soft:</strong> {skills.soft}
+    //           </p>
+    //           <h2>Achievements</h2>
+    //           <div dangerouslySetInnerHTML={{ __html: achievements }} />
+    //         </div>
+    //       </div>
+    //     </div>
+    //   </div>
+    // </div>
+    <div className="flex flex-col h-screen">
+      <button
+        className="self-end p-2 bg-blue-500 text-white cursor-pointer rounded m-2 hover:bg-blue-700"
+        onClick={handleSignoutClick}
+      >
         Signout
       </button>
-      <div className="resume-content">
-        <form>
-          <div>
-            <label>Name:</label>
+      <div className="flex flex-1 overflow-auto">
+        <form className="flex flex-col w-1/2 p-5">
+          <div className="mb-4">
+            <label className="block mb-1">Name:</label>
             <input
+              className="w-full p-2 border border-gray-300 rounded"
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              required
             />
           </div>
-          <div>
-            <label>Email:</label>
+          <div className="mb-4">
+            <label className="block mb-1">Email:</label>
             <input
+              className="w-full p-2 border border-gray-300 rounded"
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              required
             />
           </div>
-          <div>
-            <label>Phone:</label>
+          <div className="mb-4">
+            <label className="block mb-1">Phone:</label>
             <input
-              type="tel"
+              className="w-full p-2 border border-gray-300 rounded"
+              type="text"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
-              required
             />
           </div>
-          <div>
-            <label>Website:</label>
+          <div className="mb-4">
+            <label className="block mb-1">Website:</label>
             <input
-              type="url"
+              className="w-full p-2 border border-gray-300 rounded"
+              type="text"
               value={website}
               onChange={(e) => setWebsite(e.target.value)}
             />
           </div>
-          <div>
-            <label>LinkedIn:</label>
+          <div className="mb-4">
+            <label className="block mb-1">LinkedIn:</label>
             <input
-              type="url"
+              className="w-full p-2 border border-gray-300 rounded"
+              type="text"
               value={linkedin}
               onChange={(e) => setLinkedin(e.target.value)}
             />
           </div>
-          <div>
-            <label>GitHub:</label>
+          <div className="mb-4">
+            <label className="block mb-1">GitHub:</label>
             <input
-              type="url"
+              className="w-full p-2 border border-gray-300 rounded"
+              type="text"
               value={github}
               onChange={(e) => setGithub(e.target.value)}
             />
           </div>
-          <div>
-            <h3>Experience</h3>
+          <div className="mb-4">
+            <label className="block mb-1">Experience:</label>
             {experience.map((exp, index) => (
-              <div key={index}>
-                <label>Period:</label>
+              <div key={index} className="mb-4">
+                <label className="block mb-1">Period:</label>
                 <input
+                  className="w-full p-2 border border-gray-300 rounded"
                   type="text"
                   value={exp.period}
                   onChange={(e) =>
                     handleExperienceChange(index, "period", e.target.value)
                   }
-                  required
                 />
-                <label>Position:</label>
+                <label className="block mb-1">Position:</label>
                 <input
+                  className="w-full p-2 border border-gray-300 rounded"
                   type="text"
                   value={exp.position}
                   onChange={(e) =>
                     handleExperienceChange(index, "position", e.target.value)
                   }
-                  required
                 />
-                <label>Company:</label>
+                <label className="block mb-1">Company:</label>
                 <input
+                  className="w-full p-2 border border-gray-300 rounded"
                   type="text"
                   value={exp.company}
                   onChange={(e) =>
                     handleExperienceChange(index, "company", e.target.value)
                   }
-                  required
                 />
-                <label>Description:</label>
+                <label className="block mb-1">Description:</label>
                 <ReactQuill
+                  className="w-full p-2 border border-gray-300 rounded"
                   value={exp.description}
                   onChange={(value) =>
                     handleExperienceChange(index, "description", value)
@@ -653,58 +945,50 @@ const ResumeBuilder: React.FC<ResumeBuilderProps> = ({ onSignout }) => {
                 />
               </div>
             ))}
-            <button
-              type="button"
-              onClick={() =>
-                setExperience([
-                  ...experience,
-                  { period: "", position: "", company: "", description: "" },
-                ])
-              }
-            >
-              Add More Experience
-            </button>
           </div>
-          <div>
-            <h3>Education</h3>
+          <div className="mb-4">
+            <label className="block mb-1">Education:</label>
             {education.map((edu, index) => (
-              <div key={index}>
-                <label>School:</label>
+              <div key={index} className="mb-4">
+                <label className="block mb-1">School:</label>
                 <input
+                  className="w-full p-2 border border-gray-300 rounded"
                   type="text"
                   value={edu.school}
                   onChange={(e) =>
                     handleEducationChange(index, "school", e.target.value)
                   }
-                  required
                 />
-                <label>Major:</label>
+                <label className="block mb-1">Major:</label>
                 <input
+                  className="w-full p-2 border border-gray-300 rounded"
                   type="text"
                   value={edu.major}
                   onChange={(e) =>
                     handleEducationChange(index, "major", e.target.value)
                   }
-                  required
                 />
-                <label>GPA:</label>
+                <label className="block mb-1">GPA:</label>
                 <input
+                  className="w-full p-2 border border-gray-300 rounded"
                   type="text"
                   value={edu.gpa}
                   onChange={(e) =>
                     handleEducationChange(index, "gpa", e.target.value)
                   }
                 />
-                <label>Period:</label>
+                <label className="block mb-1">Period:</label>
                 <input
+                  className="w-full p-2 border border-gray-300 rounded"
                   type="text"
                   value={edu.period}
                   onChange={(e) =>
                     handleEducationChange(index, "period", e.target.value)
                   }
                 />
-                <label>Description:</label>
+                <label className="block mb-1">Description:</label>
                 <ReactQuill
+                  className="w-full p-2 border border-gray-300 rounded"
                   value={edu.description}
                   onChange={(value) =>
                     handleEducationChange(index, "description", value)
@@ -712,131 +996,120 @@ const ResumeBuilder: React.FC<ResumeBuilderProps> = ({ onSignout }) => {
                 />
               </div>
             ))}
+          </div>
+          <div className="mb-4">
+            <label className="block mb-1">Skills:</label>
+            <div className="mb-2">
+              <label className="block mb-1">Technical:</label>
+              <input
+                className="w-full p-2 border border-gray-300 rounded"
+                type="text"
+                value={skills.technical}
+                onChange={(e) =>
+                  handleSkillsChange("technical", e.target.value)
+                }
+              />
+            </div>
+            <div className="mb-2">
+              <label className="block mb-1">Non-Technical:</label>
+              <input
+                className="w-full p-2 border border-gray-300 rounded"
+                type="text"
+                value={skills.nonTechnical}
+                onChange={(e) =>
+                  handleSkillsChange("nonTechnical", e.target.value)
+                }
+              />
+            </div>
+            <div className="mb-2">
+              <label className="block mb-1">Managerial:</label>
+              <input
+                className="w-full p-2 border border-gray-300 rounded"
+                type="text"
+                value={skills.managerial}
+                onChange={(e) =>
+                  handleSkillsChange("managerial", e.target.value)
+                }
+              />
+            </div>
+            <div className="mb-2">
+              <label className="block mb-1">Soft:</label>
+              <input
+                className="w-full p-2 border border-gray-300 rounded"
+                type="text"
+                value={skills.soft}
+                onChange={(e) => handleSkillsChange("soft", e.target.value)}
+              />
+            </div>
+          </div>
+          <div className="mb-4">
+            <label className="block mb-1">Achievements:</label>
+            <ReactQuill
+              className="w-full p-2 border border-gray-300 rounded"
+              value={achievements}
+              onChange={setAchievements}
+            />
+          </div>
+          {error && <div className="text-red-500 mb-4">{error}</div>}
+          <div className="flex justify-between">
             <button
+              className="p-2 bg-green-500 text-white cursor-pointer rounded hover:bg-green-700"
               type="button"
-              onClick={() =>
-                setEducation([
-                  ...education,
-                  {
-                    school: "",
-                    major: "",
-                    gpa: "",
-                    period: "",
-                    description: "",
-                  },
-                ])
-              }
+              onClick={handlePDFDownload}
             >
-              Add More Education
+              Download as PDF
+            </button>
+            <button
+              className="p-2 bg-green-500 text-white cursor-pointer rounded hover:bg-green-700"
+              type="button"
+              onClick={handleDOCDownload}
+            >
+              Download as DOC
+            </button>
+            <button
+              className="p-2 bg-blue-500 text-white cursor-pointer rounded hover:bg-blue-700"
+              type="button"
+              onClick={updatePreview}
+            >
+              Update Preview
             </button>
           </div>
-          <div>
-            <h3>Skills</h3>
-            <label>Technical:</label>
-            <input
-              type="text"
-              value={skills.technical}
-              onChange={(e) => handleSkillsChange("technical", e.target.value)}
-            />
-            <label>Non-Technical:</label>
-            <input
-              type="text"
-              value={skills.nonTechnical}
-              onChange={(e) =>
-                handleSkillsChange("nonTechnical", e.target.value)
-              }
-            />
-            <label>Managerial:</label>
-            <input
-              type="text"
-              value={skills.managerial}
-              onChange={(e) => handleSkillsChange("managerial", e.target.value)}
-            />
-            <label>Soft:</label>
-            <input
-              type="text"
-              value={skills.soft}
-              onChange={(e) => handleSkillsChange("soft", e.target.value)}
-            />
-          </div>
-          <div>
-            <h3>Achievements</h3>
-            <label>Description:</label>
-            <ReactQuill
-              value={achievements}
-              onChange={(value) => setAchievements(value)}
-            />
-          </div>
-          {error && <p className="error">{error}</p>}
-          <button type="button" onClick={updatePreview}>
-            Update Preview
-          </button>
-          <button type="button" onClick={handlePDFDownload}>
-            Download PDF
-          </button>
-          <button type="button" onClick={handleDOCDownload}>
-            Download DOCX
-          </button>
         </form>
-        <div className="preview-container">
-          <div className="a4-preview">
-            <div className="content">
-              <h1>{name}</h1>
-              <p>
-                Email: {email} | Phone: {phone}
-              </p>
-              <p>
-                Website: {website} | LinkedIn: {linkedin} | GitHub: {github}
-              </p>
-              <h2>Experience</h2>
-              {experience.map((exp, index) => (
-                <div key={index}>
-                  <p>
-                    <strong>Period:</strong> {exp.period}
-                  </p>
-                  <p>
-                    <strong>Position:</strong> {exp.position}
-                  </p>
-                  <p>
-                    <strong>Company:</strong> {exp.company}
-                  </p>
-                  <div dangerouslySetInnerHTML={{ __html: exp.description }} />
-                </div>
-              ))}
-              <h2>Education</h2>
-              {education.map((edu, index) => (
-                <div key={index}>
-                  <p>
-                    <strong>School:</strong> {edu.school}
-                  </p>
-                  <p>
-                    <strong>Major:</strong> {edu.major}
-                  </p>
-                  <p>
-                    <strong>GPA:</strong> {edu.gpa}
-                  </p>
-                  <p>
-                    <strong>Period:</strong> {edu.period}
-                  </p>
-                  <div dangerouslySetInnerHTML={{ __html: edu.description }} />
-                </div>
-              ))}
-              <h2>Skills</h2>
-              <p>
-                <strong>Technical:</strong> {skills.technical}
-              </p>
-              <p>
-                <strong>Non-Technical:</strong> {skills.nonTechnical}
-              </p>
-              <p>
-                <strong>Managerial:</strong> {skills.managerial}
-              </p>
-              <p>
-                <strong>Soft:</strong> {skills.soft}
-              </p>
-              <h2>Achievements</h2>
-              <div dangerouslySetInnerHTML={{ __html: achievements }} />
-            </div>
+        <div className="w-1/2 p-5">
+          <h2 className="text-xl font-bold mb-4">Resume Preview</h2>
+          <div className="p-4 border border-gray-300 rounded">
+            <h3 className="text-lg font-bold mb-2">{name}</h3>
+            <p className="mb-2">Email: {email}</p>
+            <p className="mb-2">Phone: {phone}</p>
+            <p className="mb-2">Website: {website}</p>
+            <p className="mb-2">LinkedIn: {linkedin}</p>
+            <p className="mb-2">GitHub: {github}</p>
+            <h4 className="font-bold mb-2">Experience:</h4>
+            {experience.map((exp, index) => (
+              <div key={index} className="mb-2">
+                <p>Period: {exp.period}</p>
+                <p>Position: {exp.position}</p>
+                <p>Company: {exp.company}</p>
+                <div dangerouslySetInnerHTML={{ __html: exp.description }} />
+              </div>
+            ))}
+            <h4 className="font-bold mb-2">Education:</h4>
+            {education.map((edu, index) => (
+              <div key={index} className="mb-2">
+                <p>School: {edu.school}</p>
+                <p>Major: {edu.major}</p>
+                <p>GPA: {edu.gpa}</p>
+                <p>Period: {edu.period}</p>
+                <div dangerouslySetInnerHTML={{ __html: edu.description }} />
+              </div>
+            ))}
+            <h4 className="font-bold mb-2">Skills:</h4>
+            <p>Technical: {skills.technical}</p>
+            <p>Non-Technical: {skills.nonTechnical}</p>
+            <p>Managerial: {skills.managerial}</p>
+            <p>Soft: {skills.soft}</p>
+            <h4 className="font-bold mb-2">Achievements:</h4>
+            <div dangerouslySetInnerHTML={{ __html: achievements }} />
           </div>
         </div>
       </div>
