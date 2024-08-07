@@ -6,7 +6,6 @@ import { auth } from "./firebaseConfig";
 import "react-quill/dist/quill.snow.css";
 import ReactQuill from "react-quill";
 import html2canvas from "html2canvas";
-// import "./ResumeBuilder.css";
 
 interface Experience {
   period: string;
@@ -115,107 +114,6 @@ const ResumeBuilder: React.FC<ResumeBuilderProps> = ({ onSignout }) => {
     return true;
   };
 
-  // const handlePDFDownload = () => {
-  //   // if (!validateForm()) return;
-
-  //   // const doc = new jsPDF();
-
-  //   // doc.text(`Name: ${name}`, 10, 10);
-  //   // doc.text(`Email: ${email}`, 10, 20);
-  //   // doc.text(`Phone: ${phone}`, 10, 30);
-  //   // doc.text(`Website: ${website}`, 10, 40);
-  //   // doc.text(`LinkedIn: ${linkedin}`, 10, 50);
-  //   // doc.text(`GitHub: ${github}`, 10, 60);
-
-  //   // doc.text(`Experience:`, 10, 70);
-  //   // experience.forEach((exp, index) => {
-  //   //   doc.text(`Period: ${exp.period}`, 10, 80 + index * 20);
-  //   //   doc.text(`Position: ${exp.position}`, 10, 90 + index * 20);
-  //   //   doc.text(`Company: ${exp.company}`, 10, 100 + index * 20);
-  //   //   doc.text(`Description: ${exp.description}`, 10, 110 + index * 20);
-  //   // });
-
-  //   // doc.text(`Education:`, 10, 120);
-  //   // education.forEach((edu, index) => {
-  //   //   doc.text(`School: ${edu.school}`, 10, 130 + index * 20);
-  //   //   doc.text(`Major: ${edu.major}`, 10, 140 + index * 20);
-  //   //   doc.text(`GPA: ${edu.gpa}`, 10, 150 + index * 20);
-  //   //   doc.text(`Period: ${edu.period}`, 10, 160 + index * 20);
-  //   //   doc.text(`Description: ${edu.description}`, 10, 170 + index * 20);
-  //   // });
-
-  //   // doc.text(`Skills:`, 10, 180);
-  //   // doc.text(`Technical: ${skills.technical}`, 10, 190);
-  //   // doc.text(`Non-Technical: ${skills.nonTechnical}`, 10, 200);
-  //   // doc.text(`Managerial: ${skills.managerial}`, 10, 210);
-  //   // doc.text(`Soft: ${skills.soft}`, 10, 220);
-
-  //   // doc.text(`Achievements: ${achievements}`, 10, 230);
-
-  //   // doc.save("resume.pdf");
-
-  //   const doc = new jsPDF();
-  //   const pageWidth = doc.internal.pageSize.getWidth();
-
-  //   // Centralize the name
-  //   const nameX = (pageWidth - doc.getTextWidth(name)) / 2;
-  //   doc.setFontSize(16);
-  //   doc.text(name, nameX, 10);
-
-  //   // Centralize the contact info
-  //   const contactParts = [email, phone, linkedin].filter(Boolean);
-  //   const contactInfo = contactParts.join(" | ");
-  //   const contactInfoWidth = doc.getTextWidth(contactInfo);
-  //   const contactInfoX = pageWidth - contactInfoWidth;
-  //   doc.setFontSize(12);
-  //   doc.text(contactInfo, contactInfoX, 20);
-
-  //   // Experience Section
-  //   doc.setFontSize(14);
-  //   doc.text("Experience:", 10, 30);
-  //   experience.forEach((exp, index) => {
-  //     const yOffset = 40 + index * 30;
-  //     doc.setFontSize(12);
-  //     doc.text(`Period: ${exp.period}`, 10, yOffset);
-  //     doc.text(`Position: ${exp.position}`, 10, yOffset + 10);
-  //     doc.text(`Company: ${exp.company}`, 10, yOffset + 20);
-  //     doc.text(`Description: ${exp.description}`, 10, yOffset + 30);
-  //   });
-
-  //   // Education Section
-  //   const educationYOffset = 40 + experience.length * 30;
-  //   doc.setFontSize(14);
-  //   doc.text("Education:", 10, educationYOffset);
-  //   education.forEach((edu, index) => {
-  //     const yOffset = educationYOffset + 10 + index * 30;
-  //     doc.setFontSize(12);
-  //     doc.text(`School: ${edu.school}`, 10, yOffset);
-  //     doc.text(`Major: ${edu.major}`, 10, yOffset + 10);
-  //     doc.text(`GPA: ${edu.gpa}`, 10, yOffset + 20);
-  //     doc.text(`Period: ${edu.period}`, 10, yOffset + 30);
-  //     doc.text(`Description: ${edu.description}`, 10, yOffset + 40);
-  //   });
-
-  //   // Skills Section
-  //   const skillsYOffset = educationYOffset + 10 + education.length * 30;
-  //   doc.setFontSize(14);
-  //   doc.text("Skills:", 10, skillsYOffset);
-  //   doc.setFontSize(12);
-  //   doc.text(`Technical: ${skills.technical}`, 10, skillsYOffset + 10);
-  //   doc.text(`Non-Technical: ${skills.nonTechnical}`, 10, skillsYOffset + 20);
-  //   doc.text(`Managerial: ${skills.managerial}`, 10, skillsYOffset + 30);
-  //   doc.text(`Soft: ${skills.soft}`, 10, skillsYOffset + 40);
-
-  //   // Achievements Section
-  //   const achievementsYOffset = skillsYOffset + 50;
-  //   doc.setFontSize(14);
-  //   doc.text("Achievements:", 10, achievementsYOffset);
-  //   doc.setFontSize(12);
-  //   doc.text(achievements, 10, achievementsYOffset + 10);
-
-  //   doc.save("resume.pdf");
-  // };
-
   const handlePDFDownload = () => {
     const input = document.getElementById("resume-preview");
     if (!input) {
@@ -314,286 +212,6 @@ const ResumeBuilder: React.FC<ResumeBuilderProps> = ({ onSignout }) => {
   };
 
   return (
-    // <div className="flex flex-col h-screen">
-    //   <button
-    //     className="self-end p-2 bg-blue-500 text-white cursor-pointer rounded m-2 hover:bg-blue-700"
-    //     onClick={handleSignoutClick}
-    //   >
-    //     Signout
-    //   </button>
-    //   <div className="flex flex-1 overflow-auto">
-    //     <form className="flex flex-col w-1/2 p-5">
-    //       <div className="mb-4">
-    //         <label className="block mb-1">Name:</label>
-    //         <input
-    //           className="w-full p-2 border border-gray-300 rounded"
-    //           type="text"
-    //           value={name}
-    //           onChange={(e) => setName(e.target.value)}
-    //         />
-    //       </div>
-    //       <div className="mb-4">
-    //         <label className="block mb-1">Email:</label>
-    //         <input
-    //           className="w-full p-2 border border-gray-300 rounded"
-    //           type="email"
-    //           value={email}
-    //           onChange={(e) => setEmail(e.target.value)}
-    //         />
-    //       </div>
-    //       <div className="mb-4">
-    //         <label className="block mb-1">Phone:</label>
-    //         <input
-    //           className="w-full p-2 border border-gray-300 rounded"
-    //           type="text"
-    //           value={phone}
-    //           onChange={(e) => setPhone(e.target.value)}
-    //         />
-    //       </div>
-    //       <div className="mb-4">
-    //         <label className="block mb-1">Website:</label>
-    //         <input
-    //           className="w-full p-2 border border-gray-300 rounded"
-    //           type="text"
-    //           value={website}
-    //           onChange={(e) => setWebsite(e.target.value)}
-    //         />
-    //       </div>
-    //       <div className="mb-4">
-    //         <label className="block mb-1">LinkedIn:</label>
-    //         <input
-    //           className="w-full p-2 border border-gray-300 rounded"
-    //           type="text"
-    //           value={linkedin}
-    //           onChange={(e) => setLinkedin(e.target.value)}
-    //         />
-    //       </div>
-    //       <div className="mb-4">
-    //         <label className="block mb-1">GitHub:</label>
-    //         <input
-    //           className="w-full p-2 border border-gray-300 rounded"
-    //           type="text"
-    //           value={github}
-    //           onChange={(e) => setGithub(e.target.value)}
-    //         />
-    //       </div>
-    //       <div className="mb-4">
-    //         <label className="block mb-1">Experience:</label>
-    //         {experience.map((exp, index) => (
-    //           <div key={index} className="mb-4">
-    //             <label className="block mb-1">Period:</label>
-    //             <input
-    //               className="w-full p-2 border border-gray-300 rounded"
-    //               type="text"
-    //               value={exp.period}
-    //               onChange={(e) =>
-    //                 handleExperienceChange(index, "period", e.target.value)
-    //               }
-    //             />
-    //             <label className="block mb-1">Position:</label>
-    //             <input
-    //               className="w-full p-2 border border-gray-300 rounded"
-    //               type="text"
-    //               value={exp.position}
-    //               onChange={(e) =>
-    //                 handleExperienceChange(index, "position", e.target.value)
-    //               }
-    //             />
-    //             <label className="block mb-1">Company:</label>
-    //             <input
-    //               className="w-full p-2 border border-gray-300 rounded"
-    //               type="text"
-    //               value={exp.company}
-    //               onChange={(e) =>
-    //                 handleExperienceChange(index, "company", e.target.value)
-    //               }
-    //             />
-    //             <label className="block mb-1">Description:</label>
-    //             <ReactQuill
-    //               className="w-full p-2 border border-gray-300 rounded"
-    //               value={exp.description}
-    //               onChange={(value) =>
-    //                 handleExperienceChange(index, "description", value)
-    //               }
-    //             />
-    //           </div>
-    //         ))}
-    //       </div>
-    //       <div className="mb-4">
-    //         <label className="block mb-1">Education:</label>
-    //         {education.map((edu, index) => (
-    //           <div key={index} className="mb-4">
-    //             <label className="block mb-1">School:</label>
-    //             <input
-    //               className="w-full p-2 border border-gray-300 rounded"
-    //               type="text"
-    //               value={edu.school}
-    //               onChange={(e) =>
-    //                 handleEducationChange(index, "school", e.target.value)
-    //               }
-    //             />
-    //             <label className="block mb-1">Major:</label>
-    //             <input
-    //               className="w-full p-2 border border-gray-300 rounded"
-    //               type="text"
-    //               value={edu.major}
-    //               onChange={(e) =>
-    //                 handleEducationChange(index, "major", e.target.value)
-    //               }
-    //             />
-    //             <label className="block mb-1">GPA:</label>
-    //             <input
-    //               className="w-full p-2 border border-gray-300 rounded"
-    //               type="text"
-    //               value={edu.gpa}
-    //               onChange={(e) =>
-    //                 handleEducationChange(index, "gpa", e.target.value)
-    //               }
-    //             />
-    //             <label className="block mb-1">Period:</label>
-    //             <input
-    //               className="w-full p-2 border border-gray-300 rounded"
-    //               type="text"
-    //               value={edu.period}
-    //               onChange={(e) =>
-    //                 handleEducationChange(index, "period", e.target.value)
-    //               }
-    //             />
-    //             <label className="block mb-1">Description:</label>
-    //             <ReactQuill
-    //               className="w-full p-2 border border-gray-300 rounded"
-    //               value={edu.description}
-    //               onChange={(value) =>
-    //                 handleEducationChange(index, "description", value)
-    //               }
-    //             />
-    //           </div>
-    //         ))}
-    //       </div>
-    //       <div className="mb-4">
-    //         <label className="block mb-1">Skills:</label>
-    //         <div className="mb-2">
-    //           <label className="block mb-1">Technical:</label>
-    //           <input
-    //             className="w-full p-2 border border-gray-300 rounded"
-    //             type="text"
-    //             value={skills.technical}
-    //             onChange={(e) =>
-    //               handleSkillsChange("technical", e.target.value)
-    //             }
-    //           />
-    //         </div>
-    //         <div className="mb-2">
-    //           <label className="block mb-1">Non-Technical:</label>
-    //           <input
-    //             className="w-full p-2 border border-gray-300 rounded"
-    //             type="text"
-    //             value={skills.nonTechnical}
-    //             onChange={(e) =>
-    //               handleSkillsChange("nonTechnical", e.target.value)
-    //             }
-    //           />
-    //         </div>
-    //         <div className="mb-2">
-    //           <label className="block mb-1">Managerial:</label>
-    //           <input
-    //             className="w-full p-2 border border-gray-300 rounded"
-    //             type="text"
-    //             value={skills.managerial}
-    //             onChange={(e) =>
-    //               handleSkillsChange("managerial", e.target.value)
-    //             }
-    //           />
-    //         </div>
-    //         <div className="mb-2">
-    //           <label className="block mb-1">Soft:</label>
-    //           <input
-    //             className="w-full p-2 border border-gray-300 rounded"
-    //             type="text"
-    //             value={skills.soft}
-    //             onChange={(e) => handleSkillsChange("soft", e.target.value)}
-    //           />
-    //         </div>
-    //       </div>
-    //       <div className="mb-4">
-    //         <label className="block mb-1">Achievements:</label>
-    //         <ReactQuill
-    //           className="w-full p-2 border border-gray-300 rounded"
-    //           value={achievements}
-    //           onChange={setAchievements}
-    //         />
-    //       </div>
-    //       {error && <div className="text-red-500 mb-4">{error}</div>}
-    //       <div className="flex justify-between">
-    //         <button
-    //           className="p-2 bg-green-500 text-white cursor-pointer rounded hover:bg-green-700"
-    //           type="button"
-    //           onClick={handlePDFDownload}
-    //         >
-    //           Download as PDF
-    //         </button>
-    //         <button
-    //           className="p-2 bg-green-500 text-white cursor-pointer rounded hover:bg-green-700"
-    //           type="button"
-    //           onClick={handleDOCDownload}
-    //         >
-    //           Download as DOC
-    //         </button>
-    //         <button
-    //           className="p-2 bg-blue-500 text-white cursor-pointer rounded hover:bg-blue-700"
-    //           type="button"
-    //           onClick={updatePreview}
-    //         >
-    //           Update Preview
-    //         </button>
-    //       </div>
-    //     </form>
-    //     <div className="w-full p-5">
-    //       <h2 className="text-xl font-bold mb-4">Resume Preview</h2>
-    //       <div
-    //         id="resume-preview"
-    //         className="p-4 border border-gray-300 rounded"
-    //       >
-    //         <h3 className="text-lg text-center font-bold">{name}</h3>
-    //         <div className="flex text-center justify-center items-center space-x-2">
-    //           <p className="mb-2">{email}</p>
-    //           <p className="mb-2">|</p>
-    //           <p className="mb-2">{phone}</p>
-    //           <p className="mb-2">|</p>
-    //           {/* <p className="mb-2">Website: {website}</p> */}
-    //           <p className="mb-2">{linkedin}</p>
-    //           {/* <p className="mb-2">GitHub: {github}</p> */}
-    //         </div>
-    //         <h4 className="font-bold mb-2">Experience:</h4>
-    //         {experience.map((exp, index) => (
-    //           <div key={index} className="mb-2">
-    //             <p>Period: {exp.period}</p>
-    //             <p>Position: {exp.position}</p>
-    //             <p>Company: {exp.company}</p>
-    //             <div dangerouslySetInnerHTML={{ __html: exp.description }} />
-    //           </div>
-    //         ))}
-    //         <h4 className="font-bold mb-2">Education:</h4>
-    //         {education.map((edu, index) => (
-    //           <div key={index} className="mb-2">
-    //             <p>School: {edu.school}</p>
-    //             <p>Major: {edu.major}</p>
-    //             <p>GPA: {edu.gpa}</p>
-    //             <p>Period: {edu.period}</p>
-    //             <div dangerouslySetInnerHTML={{ __html: edu.description }} />
-    //           </div>
-    //         ))}
-    //         <h4 className="font-bold mb-2">Skills:</h4>
-    //         <p>Technical: {skills.technical}</p>
-    //         <p>Non-Technical: {skills.nonTechnical}</p>
-    //         <p>Managerial: {skills.managerial}</p>
-    //         <p>Soft: {skills.soft}</p>
-    //         <h4 className="font-bold mb-2">Achievements:</h4>
-    //         <div dangerouslySetInnerHTML={{ __html: achievements }} />
-    //       </div>
-    //     </div>
-    //   </div>
-    // </div>
     <div className="flex flex-col h-screen bg-gray-100">
       <button
         className="self-end p-2 bg-blue-500 text-white cursor-pointer rounded m-2 hover:bg-blue-700 transition duration-300 ease-in-out shadow-lg"
@@ -933,3 +551,385 @@ const ResumeBuilder: React.FC<ResumeBuilderProps> = ({ onSignout }) => {
 };
 
 export default ResumeBuilder;
+
+// <div className="flex flex-col h-screen">
+//   <button
+//     className="self-end p-2 bg-blue-500 text-white cursor-pointer rounded m-2 hover:bg-blue-700"
+//     onClick={handleSignoutClick}
+//   >
+//     Signout
+//   </button>
+//   <div className="flex flex-1 overflow-auto">
+//     <form className="flex flex-col w-1/2 p-5">
+//       <div className="mb-4">
+//         <label className="block mb-1">Name:</label>
+//         <input
+//           className="w-full p-2 border border-gray-300 rounded"
+//           type="text"
+//           value={name}
+//           onChange={(e) => setName(e.target.value)}
+//         />
+//       </div>
+//       <div className="mb-4">
+//         <label className="block mb-1">Email:</label>
+//         <input
+//           className="w-full p-2 border border-gray-300 rounded"
+//           type="email"
+//           value={email}
+//           onChange={(e) => setEmail(e.target.value)}
+//         />
+//       </div>
+//       <div className="mb-4">
+//         <label className="block mb-1">Phone:</label>
+//         <input
+//           className="w-full p-2 border border-gray-300 rounded"
+//           type="text"
+//           value={phone}
+//           onChange={(e) => setPhone(e.target.value)}
+//         />
+//       </div>
+//       <div className="mb-4">
+//         <label className="block mb-1">Website:</label>
+//         <input
+//           className="w-full p-2 border border-gray-300 rounded"
+//           type="text"
+//           value={website}
+//           onChange={(e) => setWebsite(e.target.value)}
+//         />
+//       </div>
+//       <div className="mb-4">
+//         <label className="block mb-1">LinkedIn:</label>
+//         <input
+//           className="w-full p-2 border border-gray-300 rounded"
+//           type="text"
+//           value={linkedin}
+//           onChange={(e) => setLinkedin(e.target.value)}
+//         />
+//       </div>
+//       <div className="mb-4">
+//         <label className="block mb-1">GitHub:</label>
+//         <input
+//           className="w-full p-2 border border-gray-300 rounded"
+//           type="text"
+//           value={github}
+//           onChange={(e) => setGithub(e.target.value)}
+//         />
+//       </div>
+//       <div className="mb-4">
+//         <label className="block mb-1">Experience:</label>
+//         {experience.map((exp, index) => (
+//           <div key={index} className="mb-4">
+//             <label className="block mb-1">Period:</label>
+//             <input
+//               className="w-full p-2 border border-gray-300 rounded"
+//               type="text"
+//               value={exp.period}
+//               onChange={(e) =>
+//                 handleExperienceChange(index, "period", e.target.value)
+//               }
+//             />
+//             <label className="block mb-1">Position:</label>
+//             <input
+//               className="w-full p-2 border border-gray-300 rounded"
+//               type="text"
+//               value={exp.position}
+//               onChange={(e) =>
+//                 handleExperienceChange(index, "position", e.target.value)
+//               }
+//             />
+//             <label className="block mb-1">Company:</label>
+//             <input
+//               className="w-full p-2 border border-gray-300 rounded"
+//               type="text"
+//               value={exp.company}
+//               onChange={(e) =>
+//                 handleExperienceChange(index, "company", e.target.value)
+//               }
+//             />
+//             <label className="block mb-1">Description:</label>
+//             <ReactQuill
+//               className="w-full p-2 border border-gray-300 rounded"
+//               value={exp.description}
+//               onChange={(value) =>
+//                 handleExperienceChange(index, "description", value)
+//               }
+//             />
+//           </div>
+//         ))}
+//       </div>
+//       <div className="mb-4">
+//         <label className="block mb-1">Education:</label>
+//         {education.map((edu, index) => (
+//           <div key={index} className="mb-4">
+//             <label className="block mb-1">School:</label>
+//             <input
+//               className="w-full p-2 border border-gray-300 rounded"
+//               type="text"
+//               value={edu.school}
+//               onChange={(e) =>
+//                 handleEducationChange(index, "school", e.target.value)
+//               }
+//             />
+//             <label className="block mb-1">Major:</label>
+//             <input
+//               className="w-full p-2 border border-gray-300 rounded"
+//               type="text"
+//               value={edu.major}
+//               onChange={(e) =>
+//                 handleEducationChange(index, "major", e.target.value)
+//               }
+//             />
+//             <label className="block mb-1">GPA:</label>
+//             <input
+//               className="w-full p-2 border border-gray-300 rounded"
+//               type="text"
+//               value={edu.gpa}
+//               onChange={(e) =>
+//                 handleEducationChange(index, "gpa", e.target.value)
+//               }
+//             />
+//             <label className="block mb-1">Period:</label>
+//             <input
+//               className="w-full p-2 border border-gray-300 rounded"
+//               type="text"
+//               value={edu.period}
+//               onChange={(e) =>
+//                 handleEducationChange(index, "period", e.target.value)
+//               }
+//             />
+//             <label className="block mb-1">Description:</label>
+//             <ReactQuill
+//               className="w-full p-2 border border-gray-300 rounded"
+//               value={edu.description}
+//               onChange={(value) =>
+//                 handleEducationChange(index, "description", value)
+//               }
+//             />
+//           </div>
+//         ))}
+//       </div>
+//       <div className="mb-4">
+//         <label className="block mb-1">Skills:</label>
+//         <div className="mb-2">
+//           <label className="block mb-1">Technical:</label>
+//           <input
+//             className="w-full p-2 border border-gray-300 rounded"
+//             type="text"
+//             value={skills.technical}
+//             onChange={(e) =>
+//               handleSkillsChange("technical", e.target.value)
+//             }
+//           />
+//         </div>
+//         <div className="mb-2">
+//           <label className="block mb-1">Non-Technical:</label>
+//           <input
+//             className="w-full p-2 border border-gray-300 rounded"
+//             type="text"
+//             value={skills.nonTechnical}
+//             onChange={(e) =>
+//               handleSkillsChange("nonTechnical", e.target.value)
+//             }
+//           />
+//         </div>
+//         <div className="mb-2">
+//           <label className="block mb-1">Managerial:</label>
+//           <input
+//             className="w-full p-2 border border-gray-300 rounded"
+//             type="text"
+//             value={skills.managerial}
+//             onChange={(e) =>
+//               handleSkillsChange("managerial", e.target.value)
+//             }
+//           />
+//         </div>
+//         <div className="mb-2">
+//           <label className="block mb-1">Soft:</label>
+//           <input
+//             className="w-full p-2 border border-gray-300 rounded"
+//             type="text"
+//             value={skills.soft}
+//             onChange={(e) => handleSkillsChange("soft", e.target.value)}
+//           />
+//         </div>
+//       </div>
+//       <div className="mb-4">
+//         <label className="block mb-1">Achievements:</label>
+//         <ReactQuill
+//           className="w-full p-2 border border-gray-300 rounded"
+//           value={achievements}
+//           onChange={setAchievements}
+//         />
+//       </div>
+//       {error && <div className="text-red-500 mb-4">{error}</div>}
+//       <div className="flex justify-between">
+//         <button
+//           className="p-2 bg-green-500 text-white cursor-pointer rounded hover:bg-green-700"
+//           type="button"
+//           onClick={handlePDFDownload}
+//         >
+//           Download as PDF
+//         </button>
+//         <button
+//           className="p-2 bg-green-500 text-white cursor-pointer rounded hover:bg-green-700"
+//           type="button"
+//           onClick={handleDOCDownload}
+//         >
+//           Download as DOC
+//         </button>
+//         <button
+//           className="p-2 bg-blue-500 text-white cursor-pointer rounded hover:bg-blue-700"
+//           type="button"
+//           onClick={updatePreview}
+//         >
+//           Update Preview
+//         </button>
+//       </div>
+//     </form>
+//     <div className="w-full p-5">
+//       <h2 className="text-xl font-bold mb-4">Resume Preview</h2>
+//       <div
+//         id="resume-preview"
+//         className="p-4 border border-gray-300 rounded"
+//       >
+//         <h3 className="text-lg text-center font-bold">{name}</h3>
+//         <div className="flex text-center justify-center items-center space-x-2">
+//           <p className="mb-2">{email}</p>
+//           <p className="mb-2">|</p>
+//           <p className="mb-2">{phone}</p>
+//           <p className="mb-2">|</p>
+//           {/* <p className="mb-2">Website: {website}</p> */}
+//           <p className="mb-2">{linkedin}</p>
+//           {/* <p className="mb-2">GitHub: {github}</p> */}
+//         </div>
+//         <h4 className="font-bold mb-2">Experience:</h4>
+//         {experience.map((exp, index) => (
+//           <div key={index} className="mb-2">
+//             <p>Period: {exp.period}</p>
+//             <p>Position: {exp.position}</p>
+//             <p>Company: {exp.company}</p>
+//             <div dangerouslySetInnerHTML={{ __html: exp.description }} />
+//           </div>
+//         ))}
+//         <h4 className="font-bold mb-2">Education:</h4>
+//         {education.map((edu, index) => (
+//           <div key={index} className="mb-2">
+//             <p>School: {edu.school}</p>
+//             <p>Major: {edu.major}</p>
+//             <p>GPA: {edu.gpa}</p>
+//             <p>Period: {edu.period}</p>
+//             <div dangerouslySetInnerHTML={{ __html: edu.description }} />
+//           </div>
+//         ))}
+//         <h4 className="font-bold mb-2">Skills:</h4>
+//         <p>Technical: {skills.technical}</p>
+//         <p>Non-Technical: {skills.nonTechnical}</p>
+//         <p>Managerial: {skills.managerial}</p>
+//         <p>Soft: {skills.soft}</p>
+//         <h4 className="font-bold mb-2">Achievements:</h4>
+//         <div dangerouslySetInnerHTML={{ __html: achievements }} />
+//       </div>
+//     </div>
+//   </div>
+// </div>
+
+// const handlePDFDownload = () => {
+//   // if (!validateForm()) return;
+
+//   // const doc = new jsPDF();
+
+//   // doc.text(`Name: ${name}`, 10, 10);
+//   // doc.text(`Email: ${email}`, 10, 20);
+//   // doc.text(`Phone: ${phone}`, 10, 30);
+//   // doc.text(`Website: ${website}`, 10, 40);
+//   // doc.text(`LinkedIn: ${linkedin}`, 10, 50);
+//   // doc.text(`GitHub: ${github}`, 10, 60);
+
+//   // doc.text(`Experience:`, 10, 70);
+//   // experience.forEach((exp, index) => {
+//   //   doc.text(`Period: ${exp.period}`, 10, 80 + index * 20);
+//   //   doc.text(`Position: ${exp.position}`, 10, 90 + index * 20);
+//   //   doc.text(`Company: ${exp.company}`, 10, 100 + index * 20);
+//   //   doc.text(`Description: ${exp.description}`, 10, 110 + index * 20);
+//   // });
+
+//   // doc.text(`Education:`, 10, 120);
+//   // education.forEach((edu, index) => {
+//   //   doc.text(`School: ${edu.school}`, 10, 130 + index * 20);
+//   //   doc.text(`Major: ${edu.major}`, 10, 140 + index * 20);
+//   //   doc.text(`GPA: ${edu.gpa}`, 10, 150 + index * 20);
+//   //   doc.text(`Period: ${edu.period}`, 10, 160 + index * 20);
+//   //   doc.text(`Description: ${edu.description}`, 10, 170 + index * 20);
+//   // });
+
+//   // doc.text(`Skills:`, 10, 180);
+//   // doc.text(`Technical: ${skills.technical}`, 10, 190);
+//   // doc.text(`Non-Technical: ${skills.nonTechnical}`, 10, 200);
+//   // doc.text(`Managerial: ${skills.managerial}`, 10, 210);
+//   // doc.text(`Soft: ${skills.soft}`, 10, 220);
+
+//   // doc.text(`Achievements: ${achievements}`, 10, 230);
+
+//   // doc.save("resume.pdf");
+
+//   const doc = new jsPDF();
+//   const pageWidth = doc.internal.pageSize.getWidth();
+
+//   // Centralize the name
+//   const nameX = (pageWidth - doc.getTextWidth(name)) / 2;
+//   doc.setFontSize(16);
+//   doc.text(name, nameX, 10);
+
+//   // Centralize the contact info
+//   const contactParts = [email, phone, linkedin].filter(Boolean);
+//   const contactInfo = contactParts.join(" | ");
+//   const contactInfoWidth = doc.getTextWidth(contactInfo);
+//   const contactInfoX = pageWidth - contactInfoWidth;
+//   doc.setFontSize(12);
+//   doc.text(contactInfo, contactInfoX, 20);
+
+//   // Experience Section
+//   doc.setFontSize(14);
+//   doc.text("Experience:", 10, 30);
+//   experience.forEach((exp, index) => {
+//     const yOffset = 40 + index * 30;
+//     doc.setFontSize(12);
+//     doc.text(`Period: ${exp.period}`, 10, yOffset);
+//     doc.text(`Position: ${exp.position}`, 10, yOffset + 10);
+//     doc.text(`Company: ${exp.company}`, 10, yOffset + 20);
+//     doc.text(`Description: ${exp.description}`, 10, yOffset + 30);
+//   });
+
+//   // Education Section
+//   const educationYOffset = 40 + experience.length * 30;
+//   doc.setFontSize(14);
+//   doc.text("Education:", 10, educationYOffset);
+//   education.forEach((edu, index) => {
+//     const yOffset = educationYOffset + 10 + index * 30;
+//     doc.setFontSize(12);
+//     doc.text(`School: ${edu.school}`, 10, yOffset);
+//     doc.text(`Major: ${edu.major}`, 10, yOffset + 10);
+//     doc.text(`GPA: ${edu.gpa}`, 10, yOffset + 20);
+//     doc.text(`Period: ${edu.period}`, 10, yOffset + 30);
+//     doc.text(`Description: ${edu.description}`, 10, yOffset + 40);
+//   });
+
+//   // Skills Section
+//   const skillsYOffset = educationYOffset + 10 + education.length * 30;
+//   doc.setFontSize(14);
+//   doc.text("Skills:", 10, skillsYOffset);
+//   doc.setFontSize(12);
+//   doc.text(`Technical: ${skills.technical}`, 10, skillsYOffset + 10);
+//   doc.text(`Non-Technical: ${skills.nonTechnical}`, 10, skillsYOffset + 20);
+//   doc.text(`Managerial: ${skills.managerial}`, 10, skillsYOffset + 30);
+//   doc.text(`Soft: ${skills.soft}`, 10, skillsYOffset + 40);
+
+//   // Achievements Section
+//   const achievementsYOffset = skillsYOffset + 50;
+//   doc.setFontSize(14);
+//   doc.text("Achievements:", 10, achievementsYOffset);
+//   doc.setFontSize(12);
+//   doc.text(achievements, 10, achievementsYOffset + 10);
+
+//   doc.save("resume.pdf");
+// };
