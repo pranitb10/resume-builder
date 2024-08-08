@@ -516,19 +516,31 @@ const ResumeBuilder: React.FC<ResumeBuilderProps> = ({ onSignout }) => {
                 ))}
               </div>
             </div>
-            <h4 className="text-xl font-bold mb-2 text-gray-700">Education:</h4>
-            {education.map((edu, index) => (
-              <div key={index} className="mb-4">
-                <p className="font-semibold">School: {edu.school}</p>
-                <p className="font-semibold">Major: {edu.major}</p>
-                <p className="font-semibold">GPA: {edu.gpa}</p>
-                <p className="font-semibold">Period: {edu.period}</p>
-                <div
-                  dangerouslySetInnerHTML={{ __html: edu.description }}
-                  className="mt-2 text-gray-600"
-                />
+            <div className="flex flex-col items-center mb-6">
+              <h4 className="text-xl underline font-bold mb-2 text-gray-700">
+                Education
+              </h4>
+              <div className="w-full">
+                {education.map((edu, index) => (
+                  <div key={index} className="mb-4">
+                    <div className="flex justify-between items-baseline">
+                      <div className="flex flex-col">
+                        <p className="font-semibold">{edu.school}</p>
+                        <div className="flex space-x-2">
+                          <p className="font-semibold">{edu.major}</p>
+                          <p className="font-semibold">{edu.gpa}</p>
+                        </div>
+                      </div>
+                      <p className="font-semibold">{edu.period}</p>
+                    </div>
+                    <div
+                      dangerouslySetInnerHTML={{ __html: edu.description }}
+                      className="mt-2 text-gray-600"
+                    />
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
             <h4 className="text-xl font-bold mb-2 text-gray-700">Skills:</h4>
             <p className="font-semibold">Technical: {skills.technical}</p>
             <p className="font-semibold">
