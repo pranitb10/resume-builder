@@ -541,20 +541,30 @@ const ResumeBuilder: React.FC<ResumeBuilderProps> = ({ onSignout }) => {
                 ))}
               </div>
             </div>
-            <h4 className="text-xl font-bold mb-2 text-gray-700">Skills:</h4>
-            <p className="font-semibold">Technical: {skills.technical}</p>
-            <p className="font-semibold">
-              Non-Technical: {skills.nonTechnical}
-            </p>
-            <p className="font-semibold">Managerial: {skills.managerial}</p>
-            <p className="font-semibold">Soft: {skills.soft}</p>
-            <h4 className="text-xl font-bold mb-2 text-gray-700">
-              Achievements:
-            </h4>
-            <div
-              dangerouslySetInnerHTML={{ __html: achievements }}
-              className="mt-2 text-gray-600"
-            />
+            <div className="flex flex-col items-center mb-6">
+              <h4 className="text-xl underline font-bold mb-2 text-gray-700">
+                Skills & Interests
+              </h4>
+              <div className="w-full">
+                <p className="font-normal">Technical: {skills.technical}</p>
+                <p className="font-normal">
+                  Non-Technical: {skills.nonTechnical}
+                </p>
+                <p className="font-normal">Managerial: {skills.managerial}</p>
+                <p className="font-normal">Soft: {skills.soft}</p>
+              </div>
+            </div>
+            <div className="flex flex-col items-center mb-6">
+              <h4 className="text-xl underline font-bold mb-2 text-gray-700">
+                Achievements
+              </h4>
+              <div className="w-full">
+                <div
+                  dangerouslySetInnerHTML={{ __html: achievements }}
+                  className="mt-2 text-gray-600"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>
