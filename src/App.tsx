@@ -1,7 +1,7 @@
 import React, { useState, useEffect, FC } from "react";
 import Signup from "./Signup";
 import Signin from "./Signin";
-import ResumeBuilder from "./ResumeBuilder";
+import ResumeBuilder from "./components/HarvardResume/HarvardResume";
 import { getUser } from "./firebaseConfig";
 import { User as FirebaseUser } from "firebase/auth";
 
