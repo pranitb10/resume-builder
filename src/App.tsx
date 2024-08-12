@@ -26,7 +26,7 @@ const App: FC = () => {
       {user ? (
         <ResumeBuilder onSignout={() => setUser(null)} />
       ) : (
-        <div className="flex justify-between w-4/5">
+        <div className="w-full h-full flex">
           {showSignup ? (
             <Signup onSignup={setUser} toggleForm={toggleForm} />
           ) : (
