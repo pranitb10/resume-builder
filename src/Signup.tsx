@@ -129,18 +129,12 @@ const Signup: FC<SignupProps> = ({ onSignup, toggleForm }) => {
                     : "border-gray-300"
                 } rounded`}
               />
-              <p
+              {/* <p
                 className="text-sm text-gray-600 cursor-pointer mt-2"
                 onClick={() => setShowPassword(!showPassword)}
               >
                 {showPassword ? "Hide PW" : "Show PW"}
-              </p>
-              <a
-                href="#"
-                className="text-sm text-blue-500 hover:underline float-right"
-              >
-                Forgot Password?
-              </a>
+              </p> */}
             </div>
             <div className="flex items-center mb-4">
               <input
